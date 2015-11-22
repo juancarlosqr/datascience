@@ -15,9 +15,13 @@
 </head>
 <body>
   <h1>D3.js</h1>
+  <p>Data Visualization</p>
   <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script type="text/javascript">
-    // code goes here
+  // appending
+  d3.select('body').append('p');
+  // selecting
+  d3.select('p').append('a'); // only the first element get selected with select
   </script>
 </body>
 </html>

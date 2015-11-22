@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+  <style type="text/css">
+  html {
+    font-family: Arial, sans-serif;
+  }
+  h1 {
+    font-size: 25px;
+  }
+  </style>
+</head>
+<body>
+  <h1>D3.js</h1>
+  <p>Data Visualization</p>
+  <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    d3.select("body")
+      .append("svg")
+        .attr("width", 50)
+        .attr("height", 50)
+      .append("circle")
+        .attr("cx", 25)
+        .attr("cy", 25)
+        .attr("r", 25)
+        .style("fill", "orange");
+    // assigning selections to variables
+    var body = d3.select("body");
+    var svg = body.append("svg")
+        .attr("width", 50)
+        .attr("height", 50);
+    var circle = svg.append("circle")
+        .attr("cx", 25)
+        .attr("cy", 25)
+        .attr("r", 25)
+        .style("fill", "green");
+  </script>
+</body>
+</html>

@@ -15,9 +15,18 @@
 </head>
 <body>
   <h1>D3.js</h1>
+  <p>Data Visualization</p>
   <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script type="text/javascript">
-    // code goes here
+    var myData = [1, 2, 3, 4];
+    var body = d3.select("body");
+    var div = body.selectAll('div')
+      .data(myData)
+      .enter()
+        .append('div')
+        .text('Using D3.js');
+    // check how the data is bound to the DOM element
+    console.log(div);
   </script>
 </body>
 </html>

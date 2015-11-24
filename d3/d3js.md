@@ -50,7 +50,7 @@ The instructions of the path are defined in case-senstive terms:
 
 __SVG Group transformations__
 
-![svg_groups.png](dashingd3js/img/svg_groups.png)
+![svg_groups.PNG](dashingd3js/img/svg_groups.PNG)
 
 ### D3 SVG Paths
 

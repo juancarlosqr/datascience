@@ -11,15 +11,14 @@
   </style>
 </head>
 <body>
-  <h3>D3.js - Data Visualization</h3>  
+  <h3>D3.js - Data Visualization</h3>
   <p>Simple Horizontal Bar Graphic</p>
   <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js" charset="utf-8"></script>
   <script>
     var dataset = [31.5, 36.8, 63.0, 41.0, 22.0, 48.6, 31.4, 57.5, 12.1];
     var width = height = 500;
     // The value 63.0 exceeds the svg canvas limit, use a scale to fix that
-    var maxValue = _.max(dataset);
+    var maxValue = d3.max(dataset);
     var widthScale = d3.scale.linear()
       .domain([0, maxValue])
       .range([0, width]);

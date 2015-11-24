@@ -48,6 +48,10 @@ The instructions of the path are defined in case-senstive terms:
 
 ![svg_path.png](dashingd3js/img/svg_path.png)
 
+__SVG Group transformations__
+
+![svg_groups.png](dashingd3js/img/svg_groups.png)
+
 ### D3 SVG Paths
 
 __Line interpolations__
@@ -91,7 +95,7 @@ The generators include:
 - d3.svg.diagonal() - create a new diagonal generator
 - d3.svg.diagonal.radial() - create a new radial diagonal generator
 
-### D3 Virtual Selections ###
+### D3 Virtual Selections
 
 > The D3.js Data Operator returns three virtual selections rather than just the regular one like other methods.
 
@@ -100,6 +104,14 @@ The three virtual selections are enter, update and exit.
 - The enter selection contains placeholders for any missing elements.
 - The update selection contains existing elements, bound to data.
 - Any remaining elements end up in the exit selection for removal.
+
+### D3 Scales
+
+- Identity: a special kind of linear scale, 1:1, good for pixel values. input == output
+- Linear: transforms one value in the domain interval into a value in the range interval
+- Power and Logarithmic scales: sqrt, pow, log – used for exponentially increasing values
+- Quantize and Quantile scales: for discrete sets of unique possible values for inputs or outputs
+- Ordinal: for non quantitative scales, like names, categories, etc.
 
 ## Others
 

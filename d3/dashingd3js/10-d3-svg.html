@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+  <style type="text/css">
+  html {
+    font-family: Arial, sans-serif;
+  }
+  h1 {
+    font-size: 25px;
+  }
+  </style>
+</head>
+<body>
+  <h1>D3.js</h1>
+  <p>Data Visualization</p>
+  <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    var circleRadii = [40, 20, 10];
+    var svg = d3.select('body')
+      .append('svg')
+      .attr('width', 200)
+      .attr('height', 200);
+    var circles = svg.selectAll('circle')
+      .data(circleRadii)
+      .enter()
+      .append('circle');
+    var finalCircles = circles
+      .attr('cx', 50)
+      .attr('cy', 50)
+      .attr('r', function (d) {
+        return d;
+      })
+      .attr('fill', function (d) {
+        var color;
+        if (d === 40)
+          color = 'green';
+        if (d === 20)
+          color = 'orange';
+        if (d === 10)
+          color = 'blue';
+        return color;
+      });
+  </script>
+</body>
+</html>

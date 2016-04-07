@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title></title>
   <style type="text/css">
-  html {
+  body {
     font-family: Arial, sans-serif;
   }
   h1 {
@@ -15,52 +15,42 @@
 </head>
 <body>
   <h1>D3.js</h1>
-  <p>Data Visualization</p>
+  <p>Data Visualization - Scales</p>
   <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script type="text/javascript">
-
-    /* Not working */
-
-    var jsonData = [
-      { "x_axis": 10, "y_axis": 10, "height": 20, "width":20, "color" : "green" },
-      { "x_axis": 16000000000, "y_axis": 40, "height": 20, "width":20, "color" : "purple" },
-      { "x_axis": 70, "y_axis": 70000000000000, "height": 20, "width":20, "color" : "red" }
-    ];
-
+    var jsonData = [0, 1000, 3000, 2000, 5000, 4000, 7000, 6000, 9000, 8000, 10000];
     var max_x = 0;
     var max_y = 0;
-
-    // var initialData = [0, 1000, 3000, 2000, 5000, 4000, 7000, 6000, 9000, 8000, 10000];
-
+    var pointWidth = 5;
+    var width = height = 200;
     var scaledData = [];
-    /* How to get the max from an array of json objects */
     var minDataPoint = d3.min(jsonData);
-    /* How to get the min from an array of json objects */
     var maxDataPoint = d3.max(jsonData);
 
     var linearScale = d3.scale.linear()
-                               .domain([minDataPoint,maxDataPoint])
-                               .range([0,100]);
+     .domain([minDataPoint, maxDataPoint])
+     .range([0, width - pointWidth]);
 
     for (var i = 0; i < jsonData.length; i++) {
       scaledData[i] = linearScale(jsonData[i]);
     }
 
-    var svgContainer = d3.select("body").append("svg")
-      .attr("width", 200)
-      .attr("height", 200);
+    var svgContainer = d3.select("body")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height);
 
     var rectangles = svgContainer.selectAll("rect")
-      .data(jsonData)
+      .data(scaledData)
       .enter()
       .append("rect");
 
     var rectangleAttributes = rectangles
-      .attr("x", function (d) { return d.x_axis; })
-      .attr("y", function (d) { return d.y_axis; })
-      .attr("height", function (d) { return d.height; })
-      .attr("width", function (d) { return d.width; })
-      .style("fill", function(d) { return d.color; });
+      .attr("x", function (d) { return d; })
+      .attr("y", function (d) { return d; })
+      .attr("height", pointWidth)
+      .attr("width", pointWidth)
+      .style("fill", "orange");
   </script>
 </body>
 </html>

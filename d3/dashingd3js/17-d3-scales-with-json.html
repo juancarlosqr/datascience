@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D3.js - JSON data fetched from server</title>
+  <style type="text/css">
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  h1 {
+    font-size: 25px;
+  }
+  </style>
+</head>
+<body>
+  <h1>D3.js</h1>
+  <h3>Data Visualization</h3>
+  <p>JSON data fetched from server</p>
+  <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    d3.json('./17-d3-scales-with-json.json', function(error, response) {
+      if (!error) {
+        console.log('I got data!', response);
+        var jsonData = response.points
+          , max_x = 0
+          , max_y = 0
+          , pointWidth = 5
+          , width = height = 200;
+
+        /* X scale */
+        var minMaxDataPointX = d3.extent(jsonData.map(function (d) {return d.x_axis;}));
+        var maxWidth = d3.max(jsonData.map(function (d) {return d.width;}));
+        var linearScaleX = d3.scale.linear()
+          .domain([minMaxDataPointX[0], minMaxDataPointX[1]])
+          .range([0, width - maxWidth]);
+
+        /* Y scale */
+        var minMaxDataPointY = d3.extent(jsonData.map(function (d) {return d.y_axis;}));
+        var maxHeight = d3.max(jsonData.map(function (d) {return d.height;}));
+        var linearScaleY = d3.scale.linear()
+          .domain([minMaxDataPointY[0], minMaxDataPointY[1]])
+          .range([0, height - maxHeight]);
+
+        for (var i = 0; i < jsonData.length; i++) {
+          jsonData[i].x = linearScaleX(jsonData[i].x_axis);
+          jsonData[i].y = linearScaleY(jsonData[i].y_axis);
+        }
+
+        /* rectangles */
+        var rectContainer = d3.select("body").append("svg")
+          .attr("width", width)
+          .attr("height", height)
+          .style("margin", "10px")
+          .style("padding", "10px")
+          .style("border-width", "1px")
+          .style("border-style", "solid")
+          .style("border-color", "#CCC");
+
+        var rectangles = rectContainer.selectAll("rect")
+          .data(jsonData)
+          .enter()
+          .append("rect");
+
+        var rectangleAttributes = rectangles
+          .attr("x", function (d) { return d.x; })
+          .attr("y", function (d) { return d.y; })
+          .attr("height", function (d) { return d.height; })
+          .attr("width", function (d) { return d.width; })
+          .style("fill", function(d) { return d.color; });
+
+          /* circles */
+        var circleContainer = d3.select("body").append("svg")
+          .attr("width", width)
+          .attr("height", height)
+          .style("margin", "10px")
+          .style("padding", "10px")
+          .style("border-width", "1px")
+          .style("border-style", "solid")
+          .style("border-color", "#CCC");
+
+        var circles = circleContainer.selectAll("circle")
+          .data(jsonData)
+          .enter()
+          .append("circle");
+
+        var rectangleAttributes = circles
+          .attr("cx", function (d) { return d.x + d.width / 2; })
+          .attr("cy", function (d) { return d.y + d.height / 2; })
+          .attr("r", function (d) { return d.width / 2; })
+          .style("fill", function(d) { return d.color; });
+
+        console.log('minMaxDataPointX', minMaxDataPointX);
+        console.log('minMaxDataPointY', minMaxDataPointY);
+        console.log('Final Data', jsonData);
+      } else {
+        var container = d3.select("body").append("p")
+          .style("color", "red")
+          .text("Sorry, we've got a connection error. Visualization not available");
+        console.log('I got an error', error);
+      }
+    });
+  </script>
+</body>
+</html>

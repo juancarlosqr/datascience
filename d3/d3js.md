@@ -50,7 +50,7 @@ The instructions of the path are defined in case-senstive terms:
 
 __SVG Group transformations__
 
-![svg_groups.PNG](dashingd3js/img/svg_groups.PNG)
+![svg_groups.png](dashingd3js/img/svg_groups.png)
 
 ### D3 SVG Paths
 
@@ -112,6 +112,16 @@ The three virtual selections are enter, update and exit.
 - Power and Logarithmic scales: sqrt, pow, log – used for exponentially increasing values
 - Quantize and Quantile scales: for discrete sets of unique possible values for inputs or outputs
 - Ordinal: for non quantitative scales, like names, categories, etc.
+
+## Exercises Screenshots
+
+![screenshot_01.png](dashingd3js/img/screenshot_01.png)
+
+___data.html___
+
+![screenshot_02.png](dashingd3js/img/screenshot_02.png)
+
+___dashingd3js / 17-d3-scales-with-json.html___
 
 ## Others
 

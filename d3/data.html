@@ -11,13 +11,14 @@
   </style>
 </head>
 <body>
-  <h3>D3.js - Data Visualization</h3>
+  <h1>D3.js</h1>
+  <h3>Data Visualization</h3>
   <p>Simple Horizontal Bar Graphic</p>
   <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script>
-    var dataset = [31.5, 36.8, 63.0, 41.0, 22.0, 48.6, 31.4, 57.5, 12.1];
-    var width = height = 500;
-    // The value 63.0 exceeds the svg canvas limit, use a scale to fix that
+    var dataset = [310.5, 360.8, 630.0, 410.0, 220.0, 480.6, 310.4, 570.5, 120.1];
+    var width = 500;
+    // The values 630.0 and 570.5 exceed the svg width limit, use a scale to fix that
     var maxValue = d3.max(dataset);
     var widthScale = d3.scale.linear()
       .domain([0, maxValue])
@@ -27,8 +28,7 @@
       .range(['green', 'orange']);
     var canvas = d3.select('body')
       .append('svg')
-      .attr('width', width)
-      .attr('height', height);
+      .attr('width', width);
     var bars = canvas.selectAll('rect')
       .data(dataset)
       .enter()

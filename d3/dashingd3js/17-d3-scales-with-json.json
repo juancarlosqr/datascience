@@ -1,0 +1,8 @@
+{
+  "points": [
+    { "x_axis": 10, "y_axis": 5, "height": 25, "width": 25, "color": "green" },
+    { "x_axis": 160000, "y_axis": 40, "height": 15, "width": 15, "color": "purple" },
+    { "x_axis": 80000, "y_axis": 2000000, "height": 20, "width": 20, "color": "orange" },
+    { "x_axis": 70, "y_axis": 7000000, "height": 10, "width": 10, "color": "red" }
+  ]
+}

@@ -81,3 +81,42 @@ min    1.0  2.000000    4.0
 75%    1.0  2.750000    4.0
 max    1.0  3.000000    4.0
 '''
+
+# check for unique values
+ser1 = Series(['w','y','a','w','y','z','b','q','w','g','h'])
+
+print(ser1)
+'''
+0     w
+1     y
+2     a
+3     w
+4     y
+5     z
+6     b
+7     q
+8     w
+9     g
+10    h
+dtype: object
+'''
+
+print(ser1.unique())
+'''
+dtype: object
+['w' 'y' 'a' 'z' 'b' 'q' 'g' 'h']
+'''
+
+# count values
+print(ser1.value_counts())
+'''
+w    3
+y    2
+q    1
+g    1
+z    1
+h    1
+b    1
+a    1
+dtype: int64
+'''

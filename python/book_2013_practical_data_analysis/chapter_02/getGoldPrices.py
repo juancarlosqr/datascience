@@ -10,6 +10,7 @@ Data also available on https://www.gold.org/feeds/xml/spot/
 @author: jc
 """
 
+import os
 from bs4 import BeautifulSoup
 import urllib.request
 from time import sleep
@@ -26,11 +27,14 @@ def getGoldPrice():
     return price.text
 
 def main():
-    with open('goldprices.log', 'w') as f:
+    dirname = os.path.split(os.path.abspath(__file__))
+    log = os.path.join(dirname[0], 'goldprices.log')
+    print(f'writing to log {log}\n')
+    with open(log, 'w+') as f:
         for x in range(0, 3):
             now = datetime.now().strftime('%I:%M:%S%p')
             goldPrice = getGoldPrice()
-            line = '{0}, {1}, {2}\n'.format(now, goldPrice, 'USD')
+            line = f'{now}, {goldPrice}, USD\n'
             print(line)
             f.write(line)
             sleep(3)

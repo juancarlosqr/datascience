@@ -1,11 +1,12 @@
 #!/usr/bin/python
 
 def run_test():
-    intab = "aeiou"
-    outtab = "12345"
+    intab = 'aeiou'
+    outtab = '54321'
     trantab = str.maketrans(intab, outtab)
 
-    result = "this is string example....wow!!!";
+    result = 'this is string example....wow!!!'
+    print(result)
     print(result.translate(trantab))
 
     trantab = str.maketrans(outtab, intab)

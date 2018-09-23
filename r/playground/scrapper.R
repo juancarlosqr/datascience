@@ -1,0 +1,5 @@
+con <- url("http://www.jhsph.edu","r")
+x <- readLines(con)
+head(x)
+tail(x)
+length(x)

@@ -1,0 +1,12 @@
+# YAML
+# Configuracion de Acceso a BD
+---
+dbserver: 192.168.2.2 
+dbport: 3306
+dbuser: juanc
+dbpass: juanc
+dbschema: monitor
+dbengine: mysql
+agentip: 200.15.2.130
+agentdesc: Produccion
+...

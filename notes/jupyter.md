@@ -37,6 +37,8 @@ conda install nb_conda
 ## Convert notebooks
 
 - to HTML: `jupyter nbconvert --to html notebook.ipynb`
+- to slides: `jupyter nbconvert notebook.ipynb --to slides`
+- to slides and http serve: `jupyter nbconvert notebook.ipynb --to slides --post serve`
 - [docs](https://nbconvert.readthedocs.io/en/latest/usage.html)
 
 ## Docs

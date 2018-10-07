@@ -82,3 +82,9 @@ target/
 
 # PyCharm
 .idea/
+
+# VS Code
+.vscode/
+
+# Config files
+config.yml

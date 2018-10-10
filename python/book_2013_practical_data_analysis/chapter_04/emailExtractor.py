@@ -56,10 +56,12 @@ def load_files(file_names):
     return subjects
 
 def get_subjects_from_path(path_base, path_name):
+    subjects = []
     path = os.path.join(path_base, path_name)
     files = get_file_names(path)
-    subjects = load_files(files)
-    head(subjects)
+    if files:
+        subjects = load_files(files)
+        head(subjects)
     return subjects
 
 def calculate_split_index(total, ratio):
@@ -91,14 +93,14 @@ def create_datasets(path_base, subjects_ham, subjects_spam, training_file = 'tra
             training_spam_set, test_spam_set = split_datasets(subjects_spam)
             write_datasets(path_base, training_file, training_ham_set, training_spam_set)
             write_datasets(path_base, test_file, test_ham_set, test_spam_set)
+            print(f'datasets created!\n')
         else:
             print(f'no subjects provided')
     else:
         print(f'path {path_base} doesn`t exist')
-    print(f'datasets created!\n')
 
 def main():
-    path_base = os.path.join(os.path.expanduser('~'), 'dev', 'anaconda', 'datasets', 'spam_classifier')
+    path_base = os.path.join(os.path.expanduser('~'), 'code', 'datasets', 'spam_classifier')
     subjects_ham = get_subjects_from_path(path_base, 'easy_ham_2')
     subjects_spam = get_subjects_from_path(path_base, 'spam_2')
     create_datasets(path_base, subjects_ham, subjects_spam)
@@ -109,7 +111,7 @@ if __name__ == '__main__':
 '''
 output:
 
-getting file names from /Users/jc/dev/anaconda/datasets/spam_classifier/easy_ham_2
+getting file names from /Users/jc/code/datasets/spam_classifier/easy_ham_2
 file_names 1401
 valid subjects 1275
 errors 126
@@ -126,7 +128,7 @@ Re: [Razor-users] report automation with pine?
 Re: [ILUG] expanding a string multiple times
 [ILUG] Checking that cronjobs actually ran?
 
-getting file names from /Users/jc/dev/anaconda/datasets/spam_classifier/spam_2
+getting file names from /Users/jc/code/datasets/spam_classifier/spam_2
 file_names 1397
 valid subjects 1265
 errors 122
@@ -143,8 +145,8 @@ HELP WANTED. WORK FROM HOME. FREE INFO
 Joke-Of -The- Day
 Your approval is needed
 
-2032 lines written to /Users/jc/dev/anaconda/datasets/spam_classifier/training.csv
-508 lines written to /Users/jc/dev/anaconda/datasets/spam_classifier/test.csv
+2032 lines written to /Users/jc/code/datasets/spam_classifier/training.csv
+508 lines written to /Users/jc/code/datasets/spam_classifier/test.csv
 datasets created!
 
 '''

@@ -73,9 +73,15 @@ def training(texts):
     return c_words, c_categories, c_texts, c_total_words
 
 def main():
-    path_base = os.path.join(os.path.expanduser('~'), 'dev', 'anaconda', 'datasets', 'spam_classifier')
+    path_base = os.path.join(os.path.expanduser('~'), 'code', 'datasets', 'spam_classifier')
     path_training = os.path.join(path_base, 'training.csv')
     path_test = os.path.join(path_base, 'test.csv')
+    if not os.path.exists(path_training):
+        print(f'path {path_test} does not exist')
+        exit(1)
+    if not os.path.exists(path_test):
+        print(f'path {path_test} does not exist')
+        exit(1)
     with open(path_training) as f:
         # skip first line (header)
         next(f)
